@@ -169,6 +169,12 @@ export default function SignUp() {
 
 	function getAddressData() {
 		if (address.cep.length === 9) {
+			setCepAddress({
+				logradouro: '...',
+				bairro: '...',
+				localidade: '...',
+				uf: '...'
+			});
 			api.getAddressByCep(address.cep).then((cepData) => {
 				if (cepData === undefined) {
 					setAddress({ ...address, cep: '' });
