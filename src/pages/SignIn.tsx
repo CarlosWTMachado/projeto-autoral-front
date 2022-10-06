@@ -1,13 +1,11 @@
-import axios from 'axios';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { signUpInterface, userInterface, addressInterface, getAddressByCepData, loginFormInterface } from '../services/types';
+import { loginFormInterface } from '../services/types';
 import api from '../services/api';
 import Swal from 'sweetalert2';
 
 export default function SignIn() {
-	const navigate = useNavigate();
 	const [loginForm, setLoginForm] = useState(() => {
 		const form: loginFormInterface = {
 			email: '',
