@@ -30,12 +30,19 @@ export async function createPet(formData: addPetInterface, token: string) {
 	return promise;
 }
 
+export async function getPet(token: string) {
+	const auth = createHeaders(token);
+	const promise = axios.get(`${BASE_URL}/pets`, auth);
+	return promise;
+}
+
 const api = {
 	BASE_URL,
 	signUp,
 	signIn,
 	getAddressByCep,
 	createPet,
+	getPet,
 }
 
 export default api;

@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { loginFormInterface } from '../services/types';
 import api from '../services/api';
 import Swal from 'sweetalert2';
 
 export default function SignIn() {
+	const navigate = useNavigate();
 	const [loginForm, setLoginForm] = useState(() => {
 		const form: loginFormInterface = {
 			email: '',
@@ -32,6 +33,7 @@ export default function SignIn() {
 		promise.then(({ data }) => {
 			const { token } = data;
 			localStorage.setItem('TOKEN', token);
+			navigate('/pet');
 		});
 		promise.catch((error) => {
 			if (error.response.status === 404) {

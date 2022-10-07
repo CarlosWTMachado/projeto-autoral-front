@@ -43,3 +43,11 @@ export interface addPetInterface {
 	picture?: string,
 	vaccinated: boolean
 }
+
+export interface petInterface {
+	id: number,
+	name: string,
+	picture?: string,
+	vaccinated: boolean,
+	ownerId: number
+}
