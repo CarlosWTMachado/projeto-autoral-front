@@ -31,3 +31,15 @@ export interface loginFormInterface {
 	email: string,
 	password: string,
 }
+
+export interface addPetFormInterface {
+	name: string,
+	picture?: string,
+	vaccinated: boolean | null
+}
+
+export interface addPetInterface {
+	name: string,
+	picture?: string,
+	vaccinated: boolean
+}
