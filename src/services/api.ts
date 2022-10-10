@@ -43,6 +43,18 @@ export async function getPet(token: string) {
 	return promise;
 }
 
+export async function deletePet(token: string, petId: number) {
+	const auth = createHeaders(token);
+	const promise = axios.delete(`${BASE_URL}/pet/${petId}`, auth);
+	return promise;
+}
+
+export async function updatePet(formData: addPetInterface, token: string, petId: number) {
+	const auth = createHeaders(token);
+	const promise = axios.put(`${BASE_URL}/pet/${petId}`, formData, auth);
+	return promise;
+}
+
 const api = {
 	BASE_URL,
 	signUp,
@@ -51,6 +63,8 @@ const api = {
 	createPet,
 	getPet,
 	createWalker,
+	deletePet,
+	updatePet
 }
 
 export default api;
