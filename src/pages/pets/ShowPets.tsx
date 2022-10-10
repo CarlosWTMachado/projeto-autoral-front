@@ -3,6 +3,8 @@ import api from '../../services/api';
 import { petInterface } from '../../services/types';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
+import ShowPetsComponent from '../../components/ShowPets/ShowPetsComponent';
+import styled from 'styled-components';
 
 export default function ShowPets() {
 	const navigate = useNavigate();
@@ -35,6 +37,7 @@ export default function ShowPets() {
 	return (
 		<>
 			<Header />
+			<Cards>
 			{
 				(pets === undefined) ?
 					<p>Carregando!</p>
@@ -42,18 +45,23 @@ export default function ShowPets() {
 					(pets.length === 0) ?
 						<p>Usuario não tem pet cadastrado!</p>
 						:
-						pets.map((pet) => {
-							console.log(pets)
+							pets.map((pet) => {
 							return (
-								<div>
-									<p>Nome: {pet.name}</p>
-									<p>Vacinado? {(pet.vaccinated) ? 'sim' : 'não'}</p>
-									<img src={pet.picture} alt='foto do pet' width='100px' height='100px'></img>
-								</div>
-							)
+								<ShowPetsComponent
+									pet={pet}
+								/>
+							);
 						})
 
 			}
+			</Cards>
 		</>
 	);
 }
+
+const Cards = styled.div`
+	margin-top: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
