@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import api from '../../services/api';
 import { petInterface } from '../../services/types';
 import { useNavigate } from 'react-router-dom';
+import Header from '../../components/Header';
 
 export default function ShowPets() {
 	const navigate = useNavigate();
@@ -33,6 +34,7 @@ export default function ShowPets() {
 
 	return (
 		<>
+			<Header />
 			{
 				(pets === undefined) ?
 					<p>Carregando!</p>
