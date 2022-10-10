@@ -13,4 +13,4 @@ export type signUpStatesType = {
 		get: getAddressByCepData,
 		set: React.Dispatch<React.SetStateAction<getAddressByCepData>>
 	}
-}
+};

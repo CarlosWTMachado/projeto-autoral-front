@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { loginFormInterface } from '../services/types';
 import api from '../services/api';
 import Swal from 'sweetalert2';
+import SignInComponent from '../components/SignIn/SignInComponent';
 
 export default function SignIn() {
 	const navigate = useNavigate();
@@ -60,105 +60,13 @@ export default function SignIn() {
 	}
 
 	return (
-		<MainStyle>
-			<>
-				<h1>Pet Walker</h1>
-				<form
-					onSubmit={(e) => {
-						handleSendForm(e);
-					}}
-				>
-					<label htmlFor='email'>Email</label>
-					<input
-						onChange={(e) => { setLoginForm({ ...loginForm, email: e.target.value }) }}
-						value={loginForm.email}
-						placeholder='example@email.com'
-						type='email'
-						id='email'
-					/>
-					<label htmlFor='password'>Senha</label>
-					<input
-						onChange={(e) => { setLoginForm({ ...loginForm, password: e.target.value }) }}
-						value={loginForm.password}
-						type='password'
-						id='password'
-					/>
-					<button type='submit'>Login</button>
-				</form>
-				<Link to='/signup'>Ainda não tem uma conta? Cadastre-se agora!</Link>
-			</>
-		</MainStyle>
+		<SignInComponent
+			functions={{
+				handleSendForm
+			}}
+			states={{
+				loginForm: { get: loginForm, set: setLoginForm }
+			}}
+		/>
 	);
 }
-
-const MainStyle = styled.main`
-display: flex;
-width: 100%;
-height: 100%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-h1 {
-    font-family: 'Righteous', cursive;
-    font-weight: bold;
-    color: #ffffff;
-    font-size: 52px;
-    font-size: 400%;
-    line-height: 50px;
-    margin: -5px 0px 35px;
-}
-h2 {
-    font-weight: bold;
-    color: #ffffff;
-    font-size: 25px;
-    line-height: 50px;
-    margin: -5px 0px;
-}
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-button {
-    background-color: #c747fc;
-    border: none;
-    width: 31%;
-    height: 54px;
-    color: #ffffff;
-    font-weight: 700;
-    font-size: 20px;
-    margin-top: 10px;
-    margin-bottom: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-}
-button:hover{
-    cursor: pointer;
-}
-button:disabled{
-    background-color: #a09da1;
-    color: #ffffff00;
-}
-input{
-    width: 60%;
-    max-width: 470px;
-    height: 45px;
-    padding: 18px 15px;
-    border-radius: 30px;
-    border: none;
-    color: #000000;
-    font-size: 12 px;
-    margin-bottom: 13px;
-}
-a {
-    color: #FFFFFF;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 18px;
-}
-`;

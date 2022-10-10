@@ -3,4 +3,4 @@ export type signUpFunctionsType = {
 	handlePhone: (e: React.ChangeEvent<HTMLInputElement>) => void,
 	handleSendForm: (e: React.FormEvent<HTMLFormElement>) => void,
 	getAddressData: () => void
-}
+};
