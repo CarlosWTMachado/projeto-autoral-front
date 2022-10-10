@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { signUpInterface, userInterface, addressInterface, getAddressByCepData } from '../services/types';
 import api from '../services/api';
 import Swal from 'sweetalert2';
-import LoginComponent from '../components/Signin/LoginComponent';
+import SignUpComponent from '../components/SignUp/SignUpComponent';
 
 export default function SignUp() {
 	const navigate = useNavigate();
@@ -185,8 +185,7 @@ export default function SignUp() {
 	}
 
 	return (
-		// <MainStyle>
-		<LoginComponent
+		<SignUpComponent
 			functions={{
 				handleCep,
 				handlePhone,
@@ -199,6 +198,5 @@ export default function SignUp() {
 				cepAddress: { get: cepAddress, set: setCepAddress }
 			}}
 		/>
-		// </MainStyle>
 	);
 }
