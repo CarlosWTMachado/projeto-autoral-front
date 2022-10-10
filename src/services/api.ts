@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { addWalkerFormInterface } from '../types/addWalkerFormInterface';
 import { signUpInterface, getAddressByCepData, loginFormInterface, addPetInterface } from './types';
 
 const BASE_URL = 'http://localhost:5000';
@@ -30,6 +31,12 @@ export async function createPet(formData: addPetInterface, token: string) {
 	return promise;
 }
 
+export async function createWalker(formData: addWalkerFormInterface, token: string) {
+	const auth = createHeaders(token);
+	const promise = axios.post(`${BASE_URL}/walker/register`, formData, auth);
+	return promise;
+}
+
 export async function getPet(token: string) {
 	const auth = createHeaders(token);
 	const promise = axios.get(`${BASE_URL}/pets`, auth);
@@ -43,6 +50,7 @@ const api = {
 	getAddressByCep,
 	createPet,
 	getPet,
+	createWalker,
 }
 
 export default api;

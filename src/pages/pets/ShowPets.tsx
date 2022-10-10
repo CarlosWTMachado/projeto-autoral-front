@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import api from '../../services/api';
-import Swal from 'sweetalert2';
 import { petInterface } from '../../services/types';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,6 +19,10 @@ export default function ShowPets() {
 				setPets(data);
 			});
 			promise.catch((error) => {
+				if (error.response.status === 498) {
+					localStorage.removeItem('TOKEN');
+					navigate('/login');
+				}
 				console.error(error);
 				navigate('/pet');
 			});
@@ -38,6 +41,7 @@ export default function ShowPets() {
 						<p>Usuario não tem pet cadastrado!</p>
 						:
 						pets.map((pet) => {
+							console.log(pets)
 							return (
 								<div>
 									<p>Nome: {pet.name}</p>

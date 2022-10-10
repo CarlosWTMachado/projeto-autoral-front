@@ -45,6 +45,10 @@ export default function AddPet() {
 					});
 					setPetForm({ ...petForm, name: '' });
 				}
+				if (error.response.status === 498) {
+					localStorage.removeItem('TOKEN');
+					navigate('/login');
+				}
 				else {
 					console.error(error);
 					navigate('/pet/add');
